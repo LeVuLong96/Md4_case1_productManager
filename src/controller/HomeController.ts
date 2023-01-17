@@ -16,6 +16,11 @@ class HomeController {
         res.render('home', {products: products})
     }
 
+    showHomeUser = async (req: Request, res: Response) => {
+        let products = await productService.getAll();
+        res.render('homeUser', {products: products})
+    }
+
     showFormCreate = async (req: Request, res: Response) => {
         let categories = await this.categoryService.getAll();
         res.render('products/create', {categories: categories});
@@ -34,11 +39,11 @@ class HomeController {
         }
     }
 
-
     showFormEdit = async (req: Request, res: Response) => {
         let id = req.params.id;
+        let categories = await this.categoryService.getAll();
         let product = await this.productService.findById(id);
-        res.render('products/edit', {product: product});
+        res.render('products/edit', {product: product, categories: categories});
     }
 
     updateProduct = async (req: Request, res: Response) => {

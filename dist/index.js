@@ -8,10 +8,12 @@ const router_1 = require("./src/router/router");
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const mongoose_1 = __importDefault(require("mongoose"));
+const express_session_1 = __importDefault(require("express-session"));
+const data_source_1 = require("./src/data-source");
 const app = (0, express_1.default)();
 mongoose_1.default.set('strictQuery', true);
-mongoose_1.default.connect('mongodb://localhost:27017/demo_dbC09').then(() => {
-    console.log('Connect Database Success');
+data_source_1.AppDataSource.initialize().then(() => {
+    console.log('Content database success!');
 });
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
@@ -21,8 +23,14 @@ app.use((0, express_fileupload_1.default)({
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.static('./public'));
+app.use((0, express_session_1.default)({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'somesecret',
+    cookie: { maxAge: 60000 }
+}));
 app.use('', router_1.router);
-app.listen(3000, () => {
-    console.log('Server is running http://localhost:3000/home');
+app.listen(8080, () => {
+    console.log('Server is running http://localhost:8080/home');
 });
 //# sourceMappingURL=index.js.map

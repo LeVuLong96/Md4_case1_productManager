@@ -111,7 +111,7 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
                         <a href="/home" class="nav-item nav-link">Home</a>
-                        <a href="/products/create" class="nav-item nav-link">Create Product</a>
+                        <a href="/products/create" class="nav-item nav-link">ADD</a>
                         <a href="detail.html" class="nav-item nav-link">Shop Detail</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -165,18 +165,18 @@
                     </div>
                     <div class="control-group">
                         <input type="number" class="form-control" name="price" placeholder="Price"
-                               required="required" data-validation-required-message="Please enter your name" />
+                               required="required" data-validation-required-message="Please enter your price" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
                         <input type="file" class="form-control" name="image" placeholder="Image"
-                               required="required" data-validation-required-message="Please enter your name" />
+                               required="required" data-validation-required-message="Please enter your image" />
                         <p class="help-block text-danger"></p>
                     </div>
                     <div class="control-group">
-                        <select name="category">
+                        <select name="category" class="form-control">
                             <% categories.map(item => {%>
-                                <option value="<%=item._id%>"><%=item.name%></option>
+                                <option value="<%=item.idCategory%>"><%=item.nameCategory%></option>
                             <%})%>
                         </select>
                     </div>

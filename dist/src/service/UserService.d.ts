@@ -1,11 +1,8 @@
 declare class UserService {
+    private userRepository;
     constructor();
-    getAll: () => Promise<(import("mongoose").Document<unknown, any, import("../model/user").IUser> & import("../model/user").IUser & {
-        _id: import("mongoose").Types.ObjectId;
-    })[]>;
-    checkUser: (user: any) => Promise<import("mongoose").Document<unknown, any, import("../model/user").IUser> & import("../model/user").IUser & {
-        _id: import("mongoose").Types.ObjectId;
-    }>;
+    checkUser: (user: any) => Promise<any>;
+    saveUser: (user: any) => Promise<any>;
 }
 declare const _default: UserService;
 export default _default;

@@ -4,6 +4,7 @@ declare class HomeController {
     private categoryService;
     constructor();
     showHome: (req: Request, res: Response) => Promise<void>;
+    showHomeUser: (req: Request, res: Response) => Promise<void>;
     showFormCreate: (req: Request, res: Response) => Promise<void>;
     create: (req: Request, res: Response) => Promise<void>;
     showFormEdit: (req: Request, res: Response) => Promise<void>;
